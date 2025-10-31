@@ -61,7 +61,7 @@ document.querySelectorAll('.main-nav a').forEach(a=>{
   const nextBtn = document.getElementById('nextMonth');
 
   const busyDays = {
-    "2025-11-06": ["20:00-22:00"],
+    "2025-11-07": ["20:00-22:00" , "18:00-19:00"],
     "2025-11-22": ["11:30-14:30"],
     "2025-11-24": ["19:00-23:00"],
     "2025-11-25": ["17:30-21:30"],
