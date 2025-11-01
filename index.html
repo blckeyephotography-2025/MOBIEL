@@ -198,6 +198,48 @@
         </form>
       </div>
     </section>
+    <script>
+document.getElementById("type_shoot").addEventListener("change", function() {
+  const fotoOpties = document.getElementById("foto_opties");
+  const videoOpties = document.getElementById("video_opties");
+  
+  fotoOpties.style.display = "none";
+  videoOpties.style.display = "none";
+  
+  if (this.value === "foto") fotoOpties.style.display = "block";
+  if (this.value === "video") videoOpties.style.display = "block";
+});
+
+document.getElementById("bookingForm").addEventListener("submit", function(e){
+  e.preventDefault();
+
+  const name = document.querySelector('[name="name"]').value;
+  const email = document.querySelector('[name="email"]').value;
+  const phone = document.querySelector('[name="phone"]').value;
+  const type = document.querySelector('[name="type"]').value;
+  const fotoOptie = document.querySelector('[name="foto_opties"]').value;
+  const videoOptie = document.querySelector('[name="video_opties"]').value;
+  const aantal_uren = document.querySelector('[name="aantal_uren"]').value;
+  const date = document.querySelector('[name="date"]').value;
+  const notes = document.querySelector('[name="notes"]').value;
+
+  const option = type === "foto" ? fotoOptie : videoOptie;
+
+  // 🔹 Vul hier je eigen WhatsApp-nummer in (zonder + of 0, dus bv. 597881234)
+  const yourNumber = "5978909628";
+
+  const message = `📸 *Nieuwe Boeking!*%0A
+👤 Naam: ${name}%0A
+📧 E-mail: ${email}%0A
+📞 Telefoon: ${phone}%0A
+🎬 Type: ${type} - ${option}%0A
+⏰ Uren: ${aantal_uren}%0A
+📅 Datum: ${date}%0A
+🗒️ Opmerkingen: ${notes ? notes : 'Geen'}`;
+
+  const whatsappURL = `https://wa.me/${yourNumber}?text=${message}`;
+  window.open(whatsappURL, "_blank");
+});
     <hr class="divider">
 
    <section id="calendar">
